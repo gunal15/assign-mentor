@@ -7,14 +7,13 @@ const{ObjectId} = require("mongodb")
 const {studentSchema} =require("../shared/schema")
 
 
-//list students
 router.get("/",async (req,res)=>{
     let data= await mongo.students.find().toArray()
     console.log(data)
     res.send(data)
 })
 
-//create new student
+
 router.post("/",async(req,res)=>{
 const {value,error}= studentSchema.validate(req.body)
 if(error) return res.status(400).send({Error:error.details[0].message})
@@ -28,7 +27,6 @@ else {
 res.send(value)
 })
 
-//assign mentor to multiple students
 router.put("/assignMentor",async(req,res)=>{
     console.log("in assignMentor")
 
@@ -36,7 +34,6 @@ router.put("/assignMentor",async(req,res)=>{
     res.status(201).send("updated")
 })
 
-//change mentor for a particular student
 router.put("/:_id",async(req,res)=>{
     let id=req.params._id
    console.log(id,req.body) 
@@ -46,7 +43,6 @@ router.put("/:_id",async(req,res)=>{
     res.send(data)
 })
 
-//show all students for a particular mentor
 router.get("/getMentor/:mentorId",async(req,res)=>{
     let id=req.params.mentorId
     console.log(id)

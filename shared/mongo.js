@@ -8,7 +8,7 @@ module.exports={
     mentors:null,
 
     async connect()
-    {   //connecting to local DB
+    {   //connecting to DB
         await client.connect();
         console.log("connected to Mongodb",process.env.MONGODB_URL)
         //Selecting DB

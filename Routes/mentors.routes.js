@@ -5,13 +5,13 @@ const mongo=require("../shared/mongo")
 const {ObjectId}=require("mongodb")
 
 const schema=require("../shared/schema");
-//list mentor
+
 router.get("/",async(req,res)=>{
     let data=await mongo.mentors.find().toArray()
     res.send(data)
 })
 
-//create new Mentor
+
 router.post("/",async(req,res)=>{
     console.log("in mentor post",req.body)
     const {value,error}= await schema.mentorSchema.validate(req.body)
