@@ -19,7 +19,7 @@ try
     app.use(express.json())
 
     app.get('/', function(req, res, next) {
-        res.send('Server running successfully. The API endpoints are /mentors ,/students');
+        res.send('Server running successfully🎉🎉');
       });
 
 app.use("/students",studentRoutes)
